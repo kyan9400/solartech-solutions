@@ -1,5 +1,5 @@
 // src/components/Header.tsx
-import { useState, useEffect } from "react"; // EDITED: Removed 'React' default import
+import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Dimage from "../assets/images/logo.png"; // Make sure this path is correct
 
@@ -33,6 +33,18 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Define the common className string for desktop nav links
+  const desktopNavLinkClass = `
+    relative font-medium text-brand-text dark:text-gray-300 
+    transition-colors duration-300 ease-out
+    hover:text-brand-blue dark:hover:text-brand-accent-glow
+    after:content-[''] after:absolute after:left-0 after:bottom-[-2px] 
+    after:h-[2px] after:w-0 
+    after:bg-brand-blue dark:after:bg-brand-accent-glow 
+    after:transition-all after:duration-300 after:ease-out
+    hover:after:w-full
+  `;
+
   return (
     // Note: 'bg-dark' should be a custom color defined in your tailwind.config.js
     // or replaced with a standard Tailwind class like 'bg-gray-900'.
@@ -53,24 +65,20 @@ const Header = () => {
             </a>
           </div>
 
+          {/* Desktop Navigation - Applying consistent animated underline hover effect */}
           <nav className="hidden md:flex space-x-7">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="relative font-medium text-brand-text dark:text-gray-300 transition-colors duration-300
-                           hover:text-brand-blue dark:hover:text-brand-accent-glow
-                           after:content-[''] after:absolute after:left-0 after:bottom-[-2px] 
-                           after:h-[2px] after:w-0 
-                           after:bg-brand-blue dark:after:bg-brand-accent-glow 
-                           after:transition-all after:duration-300 after:ease-out
-                           hover:after:w-full"
+                className={desktopNavLinkClass} // Use the defined class string
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               type="button"
@@ -90,6 +98,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile Menu Panel */}
       <div
         id="mobile-menu-items"
         className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg rounded-b-md overflow-hidden
