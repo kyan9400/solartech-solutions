@@ -1,0 +1,22 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss"; /* This is the modern way to include Tailwind */
+
+body {
+  @apply bg-white text-gray-800 antialiased font-sans; /* Apply the sans font family */
+}
+
+
+/* Example of what Tailwind might generate for text-test-magenta */
+.text-test-magenta {
+  --tw-text-opacity: 1;
+  color: rgb(255 0 255 / var(--tw-text-opacity)); /* #FF00FF is rgb(255,0,255) */
+}
+
+/* Example of what Tailwind might generate for bg-test-darkblue */
+.bg-test-darkblue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 139 / var(--tw-bg-opacity)); /* #00008B is rgb(0,0,139) */
+}
+
