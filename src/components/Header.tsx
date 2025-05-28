@@ -1,5 +1,5 @@
 // src/components/Header.tsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; // EDITED: Removed 'React' default import
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Dimage from "../assets/images/logo.png"; // Make sure this path is correct
 
@@ -34,12 +34,11 @@ const Header = () => {
   }, []);
 
   return (
-    // Assuming 'bg-dark' is a custom color you've defined in your tailwind.config.js
-    // If not, you might want to use a standard Tailwind dark background like bg-gray-900 or bg-slate-900
+    // Note: 'bg-dark' should be a custom color defined in your tailwind.config.js
+    // or replaced with a standard Tailwind class like 'bg-gray-900'.
     <header className="bg-dark dark:bg-white shadow-md sticky top-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
-          {/* Logo / Site Name */}
           <div className="flex-shrink-0">
             <a
               href="/"
@@ -54,7 +53,6 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation - Edited with animated underline hover effect */}
           <nav className="hidden md:flex space-x-7">
             {navLinks.map((link) => (
               <a
@@ -62,7 +60,7 @@ const Header = () => {
                 href={link.href}
                 className="relative font-medium text-brand-text dark:text-gray-300 transition-colors duration-300
                            hover:text-brand-blue dark:hover:text-brand-accent-glow
-                           after:content-[''] after:absolute after:left-0 after:bottom-[-4px] 
+                           after:content-[''] after:absolute after:left-0 after:bottom-[-2px] 
                            after:h-[2px] after:w-0 
                            after:bg-brand-blue dark:after:bg-brand-accent-glow 
                            after:transition-all after:duration-300 after:ease-out
@@ -73,7 +71,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               type="button"
@@ -93,7 +90,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Panel */}
       <div
         id="mobile-menu-items"
         className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg rounded-b-md overflow-hidden
