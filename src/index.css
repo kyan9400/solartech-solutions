@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss"; /* This is the modern way to include Tailwind */
 
+html {
+  scroll-behavior: smooth;
+}
 body {
-  @apply bg-white text-gray-800 antialiased font-sans; /* Apply the sans font family */
+  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-colors duration-300;
 }
