@@ -1,8 +1,5 @@
-// src/components/TeamSection.tsx
 import React from "react";
 import { motion } from "framer-motion";
-// UserCircleIcon can be removed if all members will have images, or kept as a fallback
-// import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 // Animation variants
 const sectionStaggerContainerVariants = {
@@ -29,32 +26,30 @@ interface TeamMember {
   id: number;
   name: string;
   title: string;
-  imageUrl: string; // Added for actual images
+  imageUrl: string;
   bio?: string;
 }
 
-// Updated teamData with placeholder imageUrls
-// Replace these with paths to your actual images in your project
 const teamData: TeamMember[] = [
   {
     id: 1,
     name: "Dr. Evelyn Reed",
     title: "Founder & Lead Strategist",
-    imageUrl: "https://via.placeholder.com/150/0052CC/FFFFFF?text=Evelyn", // Placeholder
+    imageUrl: "https://via.placeholder.com/150/0052CC/FFFFFF?text=Evelyn",
     bio: "Visionary leader with 15+ years in tech innovation and strategic growth.",
   },
   {
     id: 2,
     name: "Marcus Chen",
     title: "Head of Engineering",
-    imageUrl: "https://via.placeholder.com/150/1A202C/FFFFFF?text=Marcus", // Placeholder
+    imageUrl: "https://via.placeholder.com/150/1A202C/FFFFFF?text=Marcus",
     bio: "Expert in scalable architectures and leading high-performing development teams.",
   },
   {
     id: 3,
     name: "Aisha Khan",
     title: "Lead UX Designer",
-    imageUrl: "https://via.placeholder.com/150/34D399/FFFFFF?text=Aisha", // Placeholder
+    imageUrl: "https://via.placeholder.com/150/34D399/FFFFFF?text=Aisha",
     bio: "Passionate about creating intuitive and impactful user experiences that delight.",
   },
 ];
@@ -62,28 +57,25 @@ const teamData: TeamMember[] = [
 const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
   return (
     <motion.div
-      className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-xl text-center transform transition-all duration-300 hover:shadow-2xl hover:scale-105 flex flex-col items-center" // Added items-center
+      className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 
+                 transition-all duration-300 ease-in-out text-center flex flex-col items-center"
       variants={contentAppearVariants}
     >
-      <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 overflow-hidden border-2 border-gray-200 dark:border-gray-600">
-        {/* Display actual image */}
+      <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-brand-blue dark:border-brand-accent-glow mb-4 shadow-md">
         <img
           src={member.imageUrl}
           alt={`Photo of ${member.name}`}
           className="w-full h-full object-cover"
         />
-        {/* Fallback if imageUrl was optional and not provided:
-         !member.imageUrl && <UserCircleIcon className="w-full h-full text-gray-400 dark:text-gray-500 p-2" /> 
-        */}
       </div>
-      <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
         {member.name}
       </h4>
       <p className="text-brand-blue dark:text-brand-accent-glow text-sm font-medium mb-2">
         {member.title}
       </p>
       {member.bio && (
-        <p className="text-gray-600 dark:text-gray-300 text-xs leading-snug">
+        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
           {member.bio}
         </p>
       )}
@@ -103,14 +95,14 @@ const TeamSection = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
-          className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-12 md:mb-16"
+          className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-12"
           variants={contentAppearVariants}
         >
           Meet Our Expert Team
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
           variants={sectionStaggerContainerVariants}
         >
           {teamData.map((member) => (
