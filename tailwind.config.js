@@ -1,15 +1,9 @@
-// tailwind.config.js (MINIMAL FOR DARK MODE TEST)
 /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: "class", // THIS MUST BE HERE
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Make sure this covers your App.tsx and components
-  ],
+module.exports = {
+  darkMode: "class", // ✅ this enables class-based dark mode
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      // No custom colors or extensions for this test to keep it simple
-    },
+    extend: {},
   },
   plugins: [],
 };
