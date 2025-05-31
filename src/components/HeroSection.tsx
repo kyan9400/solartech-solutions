@@ -79,7 +79,7 @@ const HeroSection = () => {
           <a
             href="#contact"
             className={`group relative overflow-hidden inline-block text-lg font-semibold px-10 py-4 
-                        text-white bg-[#34D399] dark:text-slate-900 dark:bg-white 
+                        text-white bg-[#34D399] dark:text-slate-900 dark:[#34D399] 
                         rounded-lg border border-transparent 
                         hover:bg-[#2EC4A0] dark:hover:bg-slate-200 
                         transform hover:scale-105 transition-all duration-300 ease-in-out 
