@@ -64,15 +64,13 @@ const AboutUsSection = () => {
   return (
     <motion.section
       id="about"
-      className="py-16 md:py-24 bg-white dark:bg-gray-800 text-center"
+      className="py-16 md:py-24 bg-white dark:bg-[#0F172A] text-center transition-colors duration-300"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.15 }}
       variants={sectionStaggerContainerVariants}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {" "}
-        {/* Reverted max-width if team section moved */}
         <motion.h2
           className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6"
           variants={contentAppearVariants}
@@ -101,22 +99,36 @@ const AboutUsSection = () => {
           {coreValuesData.map((value) => (
             <motion.div
               key={value.id}
-              className="group bg-gray-50 dark:bg-gray-700/60 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col"
+              className="group relative overflow-hidden bg-gray-50 dark:bg-gray-700/60 p-6 rounded-xl shadow-lg 
+                         hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col"
               variants={contentAppearVariants}
             >
-              <div className="flex-shrink-0 flex items-center justify-center mb-5 w-14 h-14 bg-brand-blue-light/50 dark:bg-brand-accent-glow/20 rounded-full group-hover:scale-110 transition-transform duration-300 mx-auto md:mx-0">
-                <value.icon
-                  className="w-7 h-7 text-brand-blue dark:text-brand-accent-glow"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="flex flex-col flex-grow">
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 text-center md:text-left">
-                  {value.title}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center md:text-left flex-grow">
-                  {value.description}
-                </p>
+              {/* Shine effect */}
+              <span
+                className="absolute top-0 left-0 block w-full h-full transform -translate-x-full skew-x-[-15deg]
+                           bg-gradient-to-r from-transparent via-white/70 to-transparent
+                           group-hover:translate-x-full transition-transform duration-700 ease-in-out z-0"
+              ></span>
+
+              <div className="relative z-10">
+                <div
+                  className="flex-shrink-0 flex items-center justify-center mb-5 w-14 h-14 
+                                bg-brand-blue-light/50 dark:bg-brand-accent-glow/20 rounded-full 
+                                group-hover:scale-110 transition-transform duration-300 mx-auto md:mx-0"
+                >
+                  <value.icon
+                    className="w-7 h-7 text-brand-blue dark:text-brand-accent-glow"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="flex flex-col flex-grow">
+                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 text-center md:text-left">
+                    {value.title}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center md:text-left flex-grow">
+                    {value.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
