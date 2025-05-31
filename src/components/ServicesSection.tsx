@@ -1,4 +1,3 @@
-// src/components/ServicesSection.tsx
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -6,7 +5,7 @@ import {
   CloudArrowUpIcon,
   DevicePhoneMobileIcon,
   ChatBubbleLeftRightIcon,
-  ArrowLongRightIcon, // For the "Learn More" link
+  ArrowLongRightIcon,
 } from "@heroicons/react/24/outline";
 
 interface Service {
@@ -19,7 +18,7 @@ interface Service {
   >;
   title: string;
   description: string;
-  learnMoreLink?: string; // Optional link for the service
+  learnMoreLink?: string;
 }
 
 const servicesData: Service[] = [
@@ -29,14 +28,14 @@ const servicesData: Service[] = [
     title: "Custom Web Development",
     description:
       "Building responsive, high-performance websites tailored to your business needs using modern technologies.",
-    learnMoreLink: "#web-development-details", // Example link
+    learnMoreLink: "#web-development-details",
   },
   {
     id: 2,
     icon: CloudArrowUpIcon,
     title: "Cloud Solutions & DevOps",
     description:
-      "Leverage the power of the cloud with our expert DevOps practices for scalable and reliable infrastructure.",
+      "Leverage the power of the cloud with expert DevOps practices for scalable and reliable infrastructure.",
     learnMoreLink: "#cloud-solutions-details",
   },
   {
@@ -57,32 +56,29 @@ const servicesData: Service[] = [
   },
 ];
 
-// Animation variants (remain the same)
+// Motion settings
 const sectionVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.15, delayChildren: 0.15 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 25 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
   const IconComponent = service.icon;
+
   return (
     <motion.div
       variants={cardVariants}
-      className="group bg-white dark:bg-gray-700 p-6 sm:p-8 rounded-xl shadow-lg 
-                 border border-transparent hover:border-brand-blue dark:hover:border-brand-accent-glow 
-                 transition-all duration-300 ease-in-out 
-                 transform hover:-translate-y-2 hover:shadow-2xl 
-                 flex flex-col items-center text-center h-full" // Added h-full for consistent card height if in grid
+      className="group relative bg-white dark:bg-gray-700 p-6 sm:p-8 rounded-xl shadow-xl border border-transparent hover:border-brand-blue dark:hover:border-brand-accent-glow transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex flex-col items-center text-center h-full"
+      aria-label={`Service: ${service.title}`}
     >
-      {/* Icon with a subtle background */}
       <div className="mb-6 p-4 bg-brand-blue-light/30 dark:bg-brand-accent-glow/10 rounded-full inline-block group-hover:scale-110 transition-transform duration-300">
         <IconComponent
           className="w-10 h-10 sm:w-12 sm:h-12 text-brand-blue dark:text-brand-accent-glow"
@@ -94,16 +90,13 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
         {service.title}
       </h3>
       <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-4 flex-grow">
-        {/* Added flex-grow to push "Learn More" down if cards have different text lengths */}
         {service.description}
       </p>
 
-      {/* Learn More Link */}
       {service.learnMoreLink && (
         <a
           href={service.learnMoreLink}
           className="inline-flex items-center text-brand-blue dark:text-brand-accent-glow font-semibold group-hover:underline mt-auto"
-          // mt-auto pushes it to the bottom if flex-grow is on paragraph
         >
           Learn More
           <ArrowLongRightIcon className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -123,7 +116,7 @@ const ServicesSection = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={sectionVariants}
           className="text-center"
         >
@@ -145,10 +138,9 @@ const ServicesSection = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={sectionVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10"
-          // Consider lg:grid-cols-3 or 4 if you have more services or want smaller cards
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
         >
           {servicesData.map((service) => (
             <ServiceCard key={service.id} service={service} />
