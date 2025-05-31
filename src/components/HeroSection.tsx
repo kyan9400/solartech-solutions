@@ -25,15 +25,14 @@ const HeroSection = () => {
     },
   };
 
-  const alwaysOnGlowClass = "shadow-[0_0_8px_0px_rgba(52,211,153,0.4)]";
-  const hoverGlowMoreClass = "hover:shadow-[0_0_15px_2px_rgba(52,211,153,0.6)]";
+  const glowBase =
+    "shadow-[0_0_8px_0px_rgba(52,211,153,0.4)] hover:shadow-[0_0_15px_2px_rgba(52,211,153,0.6)] transition-all duration-300";
 
   return (
     <motion.section
       id="home"
       className="relative overflow-hidden py-24 md:py-32 lg:py-40 transition-colors duration-300
-                 bg-gradient-to-br from-white to-slate-100 text-slate-900
-                 dark:from-[#192A56] dark:to-[#2F3640] dark:text-white"
+                 bg-white text-slate-900 dark:bg-[#0F172A] dark:text-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
@@ -44,16 +43,16 @@ const HeroSection = () => {
           className="text-4xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8"
           variants={itemVariants}
         >
-          <span className="text-slate-800 dark:text-[#E0E0E0]">
+          <span className="text-slate-800 dark:text-slate-200">
             Innovative Tech Solutions for{" "}
           </span>
-          <span className="block md:inline text-black dark:text-white">
+          <span className="block md:inline text-[#0052CC] dark:text-[#34D399]">
             Your Growing Business
           </span>
         </motion.h1>
 
         <motion.p
-          className="max-w-lg md:max-w-2xl mx-auto text-lg md:text-xl text-slate-600 dark:text-[#CBD5E1] opacity-95 mb-12"
+          className="max-w-lg md:max-w-2xl mx-auto text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-12"
           variants={itemVariants}
         >
           At SolarTech Solutions, our expert team delivers cutting-edge
@@ -67,11 +66,11 @@ const HeroSection = () => {
         >
           <a
             href="#services"
-            className={`group relative inline-block text-lg font-semibold text-[#0052CC] px-10 py-4 bg-white rounded-lg 
-                       ${alwaysOnGlowClass} ${hoverGlowMoreClass}
-                       hover:bg-gray-50 
-                       transition-all duration-300 ease-in-out
-                       transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#34D399] focus:ring-opacity-50`}
+            className={`group inline-block text-lg font-semibold px-10 py-4 
+                        bg-white text-[#0052CC] dark:bg-slate-800 dark:text-[#34D399] 
+                        rounded-lg border border-transparent dark:border-[#34D399]
+                        hover:bg-slate-50 dark:hover:bg-slate-700 
+                        ${glowBase}`}
             aria-label="Explore Our Services"
           >
             <span className="relative z-10">Our Services</span>
@@ -79,16 +78,19 @@ const HeroSection = () => {
 
           <a
             href="#contact"
-            className={`group relative overflow-hidden inline-block text-lg font-semibold text-white px-10 py-4 bg-transparent border-2 border-[#34D399] rounded-lg 
-                       ${alwaysOnGlowClass} ${hoverGlowMoreClass}
-                       hover:bg-[#34D399]/20 hover:text-white hover:border-transparent 
-                       transform hover:scale-105 transition-all duration-300 ease-in-out 
-                       focus:outline-none focus:ring-4 focus:ring-[#34D399] focus:ring-opacity-50`}
+            className={`group relative overflow-hidden inline-block text-lg font-semibold px-10 py-4 
+                        text-white bg-[#34D399] dark:text-slate-900 dark:bg-white 
+                        rounded-lg border border-transparent 
+                        hover:bg-[#2EC4A0] dark:hover:bg-slate-200 
+                        transform hover:scale-105 transition-all duration-300 ease-in-out 
+                        focus:outline-none focus:ring-4 focus:ring-[#34D399] focus:ring-opacity-50
+                        ${glowBase}`}
             aria-label="Contact Us"
           >
+            {/* ✨ Shine effect animation */}
             <span
               className="absolute top-0 left-0 block w-full h-full transform -translate-x-full skew-x-[-15deg]
-                         bg-gradient-to-r from-transparent from-40% via-white/70 via-50% to-transparent to-60%
+                         bg-gradient-to-r from-transparent via-white/70 to-transparent
                          group-hover:translate-x-full transition-transform duration-700 ease-in-out z-0"
             ></span>
             <span className="relative z-10">Contact Us</span>
