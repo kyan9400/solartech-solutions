@@ -1,4 +1,3 @@
-// src/components/ContactUs.tsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -79,7 +78,6 @@ const ContactUs = () => {
         type: "error",
         message: "Please correct the errors in the form.",
       });
-      console.log("Form validation failed", errors);
     }
   };
 
@@ -97,36 +95,27 @@ const ContactUs = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }} // <-- EDITED: once: false
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ staggerChildren: 0.15 }}
-          // Note: If formItemVariants is used by children directly, variants on this parent are not strictly needed
-          // unless this parent itself has animation states defined in sectionVariants (which it doesn't here).
-          // For staggering, this setup is fine.
         >
           <motion.h2
             className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4"
             variants={formItemVariants}
           >
-            <>
-              {/* Text child wrapped */}
-              Get In Touch
-            </>
+            Get In Touch
           </motion.h2>
           <motion.p
             className="text-lg text-center text-gray-600 dark:text-gray-300 mb-10"
             variants={formItemVariants}
           >
-            <>
-              {/* Text child wrapped */}
-              Have a project in mind or just want to say hi? We'd love to hear
-              from you.
-            </>
+            Have a project in mind or just want to say hi? We'd love to hear
+            from you.
           </motion.p>
 
           <motion.form
             onSubmit={handleSubmit}
             className="space-y-6 bg-white dark:bg-gray-700 p-8 sm:p-10 rounded-xl shadow-2xl"
-            variants={formItemVariants} // This form will animate as one item after the paragraph
+            variants={formItemVariants}
             noValidate
           >
             {/* Name Field */}
@@ -265,48 +254,54 @@ const ContactUs = () => {
               </div>
             )}
 
-            {/* Submit Button */}
-            <div>
+            {/* Submit Button with Shine Effect */}
+            <div className="relative w-full group">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-lg font-medium text-white 
+                className={`relative overflow-hidden w-full flex justify-center items-center py-3 px-4 rounded-md shadow-lg text-lg font-medium text-white
                            bg-[#0052CC] hover:bg-[#0041A3] 
                            focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-[#34D399]
-                           transition-all duration-300 ease-in-out transform hover:scale-105
-                           active:scale-95
+                           transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95
                            ${
                              isSubmitting ? "opacity-70 cursor-not-allowed" : ""
                            }
-                           ${"shadow-[0_0_8px_0px_rgba(52,211,153,0.4)] hover:shadow-[0_0_15px_2px_rgba(52,211,153,0.6)]"}`}
+                           shadow-[0_0_8px_0px_rgba(52,211,153,0.4)] hover:shadow-[0_0_15px_2px_rgba(52,211,153,0.6)]`}
               >
-                {isSubmitting ? (
-                  <>
-                    <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Sending...
-                  </>
-                ) : (
-                  "Send Message"
-                )}
+                <span
+                  className="absolute top-0 left-0 w-full h-full transform -translate-x-full skew-x-[-20deg]
+                             bg-gradient-to-r from-transparent via-white/60 to-transparent
+                             group-hover:translate-x-full transition-transform duration-700 ease-in-out z-0"
+                ></span>
+                <span className="relative z-10 flex items-center">
+                  {isSubmitting ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
+                </span>
               </button>
             </div>
           </motion.form>
