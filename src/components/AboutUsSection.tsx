@@ -1,4 +1,3 @@
-// src/components/AboutUsSection.tsx
 import { motion } from "framer-motion";
 import {
   LightBulbIcon,
@@ -19,7 +18,7 @@ const sectionStaggerContainerVariants = {
 };
 
 const contentAppearVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
