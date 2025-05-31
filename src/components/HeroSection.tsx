@@ -32,7 +32,7 @@ const HeroSection = () => {
     <motion.section
       id="home"
       className="relative overflow-hidden py-24 md:py-32 lg:py-40 transition-colors duration-300
-                 bg-white text-slate-900 dark:bg-[#0F172A] dark:text-white"
+      bg-white text-slate-900 dark:bg-[#0F172A] dark:text-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
